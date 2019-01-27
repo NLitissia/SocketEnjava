@@ -1,6 +1,9 @@
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -25,12 +28,28 @@ public class Server {
 		//l'objet socket génere possede getInputStream() pour lire la donnée envoyé par le client
 		//et getOutputStream();  pour envoyé la repense
 		InputStream is = s.getInputStream();
+		//InputStreamReader c pour lire une chaine de cararctére
+		InputStreamReader isr = new InputStreamReader(is);
+		BufferedReader br =  new BufferedReader(isr);
+		System.out.println("j'attens une chaine de caractére");
+		String msg = br.readLine();
+		while(msg != null)
+		{
+		System.out.println("message reçu est  : " + msg);
+		 msg = br.readLine();
+		}
 		OutputStream os = s.getOutputStream();
-		System.out.println("j attend un nombre");
-		int nb = is.read();
-		int rep = nb + 3 ;
 		System.out.println("j envois la repense");
-		os.write(rep);
+		PrintWriter pw = new PrintWriter(os);
+		pw.write("c'est la repense");
+		pw.flush();
+//		System.out.println("j attend un nombre");
+		// quand on utilise  la methode read on attend 4 octet se qui veut dire 4 caractére
+//		int nb = is.read();
+//		quand c que avec inputstream (recevoir un entier)
+//		int rep = nb + 3 ;
+		
+		//os.write(rep);
 		//fermer la connexion
 		s.close();
 		
