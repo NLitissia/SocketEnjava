@@ -24,6 +24,7 @@ public class Server {
 		System.out.println("j'attend la connexion d'un client");
 		//le serveur attend qu un client se connect
 		//quand un client se connect il y a automatiquement une géneration d'une socket
+	
 		Socket s = ss.accept();
 		//l'objet socket génere possede getInputStream() pour lire la donnée envoyé par le client
 		//et getOutputStream();  pour envoyé la repense
