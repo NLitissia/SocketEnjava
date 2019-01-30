@@ -27,8 +27,7 @@ public class Server1 {
 	Charset c = Charset.forName("UTF-8");/*faut avoir l encodage du client comme */
 	CharBuffer cb  = c.decode(bb);
 	System.out.print(cb.toString());
-	bb.clear();/*prépare un tampon pour une nouvelle séquence d'opérations de lecture de canal ou d' opérations de vente relatives 
-	définit la limite de capacité et la position à zéro*/
+	bb.clear();
  }
  public static void main(String[] args) throws IOException
  {  System.out.println("avant accepte");
